@@ -1,0 +1,173 @@
+﻿@model ParcialErickGenerator.Models.CEDULAS
+@{
+    ViewBag.Title = "CedulaVista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="limiter">
+    <div class="wrap-login100" style="padding-top:1%;">
+
+
+        <div class="text-center">
+            <a class="btn btn-success" href="/Home/Inicio" onclick="javascript: window.print()">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                &nbsp;&nbsp; Imprimir
+            </a>
+
+            <a class="btn btn-danger" href="" onclick="javascript: window.history.back(1); return false;">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                &nbsp;&nbsp; VOLVER
+            </a>
+        </div>
+        <span class="login100-form-title" style="padding-top:20px;">
+            Parte Delantera De La Cedula
+        </span>
+  
+        <section class="cedulaFrontal" style="justify-content: center;  align-items: center; position: relative; margin: 0 auto;" >
+
+
+            <div style="padding: 2%;">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col col-1 "><img src="~/Content/images/escudo.png " width="45 " height="45 " alt="IMG "></div>
+
+                        <div class="col-8" style="line-height:13px;  margin-left:9%;">
+                            <label style="text-align:center;padding:0 !important;margin:0 !important;letter-spacing: 3pt;color: black; line-height:0;font-size: 16px;font-weight: bold; ">REPUBLICA DOMINICANA</label>
+                            <label style="text-align:center; padding: 0 !important; margin: 0 !important; letter-spacing: 2.4pt; line-height:0px; color: black;font-size: 14px;font-weight: bold; ">JUNTA CENTRAL ELECTRORAL</label>
+                            <label style="text-align:center; padding: 0 !important; margin: 0 !important; letter-spacing: 1.6pt; line-height:0px; color: black;font-size: 12px;font-weight: bold; ">CEDULA DE IDENTIDAD Y ELECTORAL</label>
+                        </div>
+
+                        <div class="col-lg-offset-1 " style="margin-top: 2%;">
+                            <img src="~/Content/images/juntaC.png " width="60 " height="65 " alt="IMG " style=" opacity: 0.8; position: absolute; ">
+                        </div>
+                    </div>
+                    <div class="row " style="line-height:24px;">
+                        <div class="col-3 ">
+                            <img   src="~/Content/images/@Html.DisplayFor(model=>model.FOTO)" width="100 " height="135 " alt="IMG " style="margin-top: 8%; border-radius:6px; ">
+                        </div>
+                        <div class="col col-lg-8 " style="padding-right: 8%; ">
+                            <p style=" line-height:24px; margin: 0; padding: 0; color:black; letter-spacing:2pt; font-size: 6px; font-weight: bold; " name="numeroCedula ">@Html.DisplayFor(model => model.ID_CEDULAS)</p>
+
+                            <div>
+                                <p style=" line-height:14px; padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">LUGAR DE NACIMIENTO:</p>
+                                <p style=" line-height:14px; padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size: 11px; font-weight: bold; "> @Html.DisplayFor(model => model.LUGARNACIMIENTO)</p>
+                            </div>
+                            <div>
+                                <p style="line-height:14px; padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">FECHA DE NACIMIENTO:</p>
+                                <p style="line-height:14px; padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size: 11px; font-weight: bold; ">@Html.DisplayFor(model => model.FECHANACIMIENTO)</p>
+                            </div>
+                            <div style="line-height:14px; ">
+                                <p style=" padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">
+                                    NACIONALIDAD: <b style=" padding:0 !important;margin:0 !important;text-align: left; color: black;font-size: 11px; font-weight:
+                bold; "> @Html.DisplayFor(model => model.NACIONALIDAD)</b>
+                                </p>
+                            </div>
+                            <div>
+                                <p style=" line-height:14px; position:absolute; padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">
+                                    SEXO: <b style=" padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size:11px; font-weight: bold; ">   @Html.DisplayFor(model => model.SEXO)</b>
+                                </p>
+                                <p style="line-height:14px; position:absolute; padding:0 !important; margin-left: 16%; text-align:left; color: black;font-size: 9px; ">
+                                    SANGRE: <b style=" padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size: 11px;font-weight: bold; "> @Html.DisplayFor(model => model.SANGRE)</b>
+                                </p>
+                                <p style=" line-height:14px; padding:0 !important;margin-left: 48%;text-align:left; color: black;font-size: 9px; ">
+                                    ESTADO CIVIL: <b style=" padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size:11px; font-weight: bold; ">    @Html.DisplayFor(model => model.ESTADOCIVIL)</b>
+                                </p>
+                            </div>
+                            <div>
+                                <p style=" line-height:14px;  padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">
+                                    OCUPACION: <b style=" padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size:11px; font-weight: bold; ">  @Html.DisplayFor(model => model.OCUPACION)</b>
+                                </p>
+                            </div>
+                            <div>
+                                <p style="line-height:20px;  padding:0 !important;margin: 0 !important; text-align:left; color: black;font-size: 9px; ">
+                                    FECHA DE EXPIRACION: <b style=" padding:0 !important;margin: 0 !important;text-align: left; color: black;font-size: 11px;font-weight:bold;"> @Html.DisplayFor(model => model.FECHAEXPIRACION)</b>
+                                    <img src="~/Content/images/mapa.png " width="40 " height="30 " alt="IMG " style="margin-top:8%; margin-left: 10%; position:absolute; opacity: 0.4; "> <img src="~/Content/images/@Html.DisplayFor(model=>model.FOTO)" width="50 " height="55 " alt="IMG " style=" border-radius:7px; margin-left: 26%; position:absolute;opacity: 0.4; ">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col " style="line-height:20px;  margin-top:1%; position:absolute; text-align:left; margin-left:2%;   padding:0 !important;font-weight: bold; ">
+                            @Html.DisplayFor(model => model.NOMBRES)   @Html.DisplayFor(model => model.APELLIDOS)
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <span class="login100-form-title" style="padding-top:20px; ">
+            Parte Trasera De La Cedula
+        </span>
+        <section class="cedulaTrasera" style="display: flex;justify-content: center;  align-items: center; position: relative; margin: 0 auto;">
+            <div style="    padding: 2%;">
+                <div class="container" style=" text-align:left;">
+                    <div class="row">
+                        <div class="col-3">
+                            <label style="font-size:8px;">CEDULA ANT.</label>
+                            <p></p>
+                            <p class="letrasTitleTrasera">COLEGIO ELECTORAL</p>
+                            <p class="letrasCedulaTrasera" name="colegioElectoral"> @Html.DisplayFor(model => model.COLEGIOELECTORAL)</p>
+
+                            <p class="letrasTitleTrasera">UBICACION DEL COLEGIO</p>
+                            <p name="ubicacionColegio" class="letrasCedulaTrasera"> @Html.DisplayFor(model => model.UBICACIONCOLEGIO)</p>
+
+                            <p class="letrasTitleTrasera">DIRECCION DE RECIDENCIA </p>
+                            <p name="direccionRecidencia" class="letrasCedulaTrasera">  @Html.DisplayFor(model => model.DIRECCIONRECIDENCIA)</p>
+
+                            <p class="letrasTitleTrasera">SECTOR </p>
+                            <p class="letrasCedulaTrasera" name="sector">  @Html.DisplayFor(model => model.SECTOR)</p>
+
+                            <p class="letrasTitleTrasera">MUNICIPIO</p>
+                            <p class="letrasCedulaTrasera" name="municipio">  @Html.DisplayFor(model => model.MUNICIPIO)</p>
+
+                        </div>
+                        <div class="col-2">
+                            <img src="~/Content/images/codigoQRw.png" width="70" height="70" alt="IMG">
+                        </div>
+                        <div class="col col-lg-6">
+                            <img src="~/Content/images/codigoH2.png" width="220" height="20" alt="IMG">
+                            <p class="letrasCedulaTrasera" style="text-align:right;" name="cedula">@Html.DisplayFor(model => model.ID_CEDULAS)</p>
+                            <p class="letrasTitleTrasera" style="text-align:right;">REGISTRO DE NACIMIENTO</p>
+                            <p class="letrasCedulaTrasera" style="text-align:right;" name="registroNacimiento"> @Html.DisplayFor(model => model.REGISTRONACIMIENTO)</p>
+                            <p class="letrasTitleTrasera" style="text-align:right;">CODIGO POSTAL</p>
+                            <p class="letrasCedulaTrasera" style="text-align:right;" name="codigoPostal"> @Html.DisplayFor(model => model.CODIGOPOSTAL)</p>
+                            <div style="text-align:right; padding-top:15%;">
+                                <img src="~/Content/images/firmaTrasera.png" width="100" height="20" alt="IMG">
+                                <p class="letrasTitleTrasera" style="text-align:right; padding-right:6%;">JULIO CESAR GUZMAN</p>
+                                <p class="letrasTitleTrasera" style="text-align:right; padding-right:12%;">PRESIDENTE JCE</p>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-offset-1" style=" padding-top:18%;">
+                            <p class="letrasCedulaTrasera" style=" writing-mode: vertical-lr; transform: rotate(180deg);">V08423640923</p>
+                        </div>
+
+                        <div class="col-lg-offset-1">
+                            <img src="~/Content/images/codigoH2.png" width="20" height="150" alt="IMG" style="padding-top:4%; position:absolute;">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:2%;">
+                        <div class="col col-lg">
+                            <p style="font-weight:bold; letter-spacing: 3pt; color:black;">IDDOM @Html.DisplayFor(model => model.ID)>>>>>>>>>>>>>>>>>>>>LARD<>></p>
+                            <p style="font-weight:bold; letter-spacing: 3pt; color:black;">@Html.DisplayFor(model => model.ID)910089M2410085DOM<<<<<<<<<<<<<<<<<<<></p>
+                            <p style="font-weight:bold; letter-spacing: 2pt; color:black;">  @Html.DisplayFor(model => model.APELLIDOS)<>>>>>>>@Html.DisplayFor(model => model.NOMBRES)<<<<<<<<<></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+            </div>
+
+
+        </section>
+    </div>
+</div>

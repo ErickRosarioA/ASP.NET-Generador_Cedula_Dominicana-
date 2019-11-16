@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Busqueda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin:2%;">
+        <a class="btn btn-warning" href="/Home/Inicio">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            &nbsp;&nbsp; REGRESAR
+        </a>
+    </div>
+
+<div class="limiter">
+    <div>
+        <div class="wrap-login100" style="  width: 860px;">
+            <div class="login100-pic js-tilt" style="margin-bottom:4%;">
+                <img src="~/Content/images/img-01.png" alt="IMG">
+            </div>
+
+            <form method="post" action="" class="login100-form validate-form" style="margin-top:8%;">
+                <span class="login100-form-title" style="padding-bottom:30px;">
+                    BUSCAR POR ID
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Se requiere un ID para hacer la busqueda">
+                    <input class="input100" type="number" name="id" placeholder="ID DE CEDULA">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        BUSCAR
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

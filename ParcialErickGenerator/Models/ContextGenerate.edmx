@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GENERATORCEDULAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CEDULAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CEDULAS" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="50" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="50" />
+          <Property Name="LUGARNACIMIENTO" Type="varchar" MaxLength="70" />
+          <Property Name="FECHANACIMIENTO" Type="date" />
+          <Property Name="NACIONALIDAD" Type="varchar" MaxLength="40" />
+          <Property Name="SEXO" Type="char" MaxLength="1" />
+          <Property Name="SANGRE" Type="varchar" MaxLength="4" />
+          <Property Name="ESTADOCIVIL" Type="varchar" MaxLength="30" />
+          <Property Name="OCUPACION" Type="varchar" MaxLength="20" />
+          <Property Name="FECHAEXPIRACION" Type="date" />
+          <Property Name="FOTO" Type="varchar" MaxLength="8000" />
+          <Property Name="COLEGIOELECTORAL" Type="int" />
+          <Property Name="UBICACIONCOLEGIO" Type="varchar" MaxLength="100" />
+          <Property Name="DIRECCIONRECIDENCIA" Type="varchar" MaxLength="100" />
+          <Property Name="SECTOR" Type="varchar" MaxLength="50" />
+          <Property Name="MUNICIPIO" Type="varchar" MaxLength="50" />
+          <Property Name="REGISTRONACIMIENTO" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGOPOSTAL" Type="int" />
+          <Property Name="FK_REGISTRO" Type="int" />
+        </EntityType>
+        <EntityType Name="LOGINE">
+          <Key>
+            <PropertyRef Name="ID_LOGIN" />
+          </Key>
+          <Property Name="ID_LOGIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USAURIO" Type="varchar" MaxLength="40" />
+          <Property Name="PASSAWORD" Type="varchar" MaxLength="40" />
+          <Property Name="FK_REGISTRO" Type="int" />
+        </EntityType>
+        <EntityType Name="REGISTRO">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRECOMPLETO" Type="varchar" MaxLength="100" />
+          <Property Name="CEDULARPERSONAL" Type="int" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="40" />
+          <Property Name="PASSAWORD" Type="varchar" MaxLength="40" />
+          <Property Name="CONFIRMPASSAWORD" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK_REGISTOL">
+          <End Role="REGISTRO" Type="Self.REGISTRO" Multiplicity="0..1" />
+          <End Role="LOGINE" Type="Self.LOGINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="LOGINE">
+              <PropertyRef Name="FK_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGSITROUSER">
+          <End Role="REGISTRO" Type="Self.REGISTRO" Multiplicity="0..1" />
+          <End Role="CEDULAS" Type="Self.CEDULAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="CEDULAS">
+              <PropertyRef Name="FK_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GENERATORCEDULAModelStoreContainer">
+          <EntitySet Name="CEDULAS" EntityType="Self.CEDULAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGINE" EntityType="Self.LOGINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REGISTRO" EntityType="Self.REGISTRO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_REGISTOL" Association="Self.FK_REGISTOL">
+            <End Role="REGISTRO" EntitySet="REGISTRO" />
+            <End Role="LOGINE" EntitySet="LOGINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGSITROUSER" Association="Self.FK_REGSITROUSER">
+            <End Role="REGISTRO" EntitySet="REGISTRO" />
+            <End Role="CEDULAS" EntitySet="CEDULAS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GENERATORCEDULAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CEDULAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CEDULAS" Type="Guid" Nullable="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LUGARNACIMIENTO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="0" />
+          <Property Name="NACIONALIDAD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SANGRE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADOCIVIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OCUPACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAEXPIRACION" Type="DateTime" Precision="0" />
+          <Property Name="FOTO" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="COLEGIOELECTORAL" Type="Int32" />
+          <Property Name="UBICACIONCOLEGIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCIONRECIDENCIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SECTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MUNICIPIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REGISTRONACIMIENTO" Type="Guid" Nullable="false" />
+          <Property Name="CODIGOPOSTAL" Type="Int32" />
+          <Property Name="FK_REGISTRO" Type="Int32" />
+          <NavigationProperty Name="REGISTRO" Relationship="Self.FK_REGSITROUSER" FromRole="CEDULAS" ToRole="REGISTRO" />
+        </EntityType>
+        <EntityType Name="LOGINE">
+          <Key>
+            <PropertyRef Name="ID_LOGIN" />
+          </Key>
+          <Property Name="ID_LOGIN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USAURIO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PASSAWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="FK_REGISTRO" Type="Int32" />
+          <NavigationProperty Name="REGISTRO" Relationship="Self.FK_REGISTOL" FromRole="LOGINE" ToRole="REGISTRO" />
+        </EntityType>
+        <EntityType Name="REGISTRO">
+          <Key>
+            <PropertyRef Name="ID_REGISTRO" />
+          </Key>
+          <Property Name="ID_REGISTRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRECOMPLETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CEDULARPERSONAL" Type="Int32" />
+          <Property Name="USUARIO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PASSAWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CONFIRMPASSAWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CEDULAS" Relationship="Self.FK_REGSITROUSER" FromRole="REGISTRO" ToRole="CEDULAS" />
+          <NavigationProperty Name="LOGINE" Relationship="Self.FK_REGISTOL" FromRole="REGISTRO" ToRole="LOGINE" />
+        </EntityType>
+        <Association Name="FK_REGSITROUSER">
+          <End Role="REGISTRO" Type="Self.REGISTRO" Multiplicity="0..1" />
+          <End Role="CEDULAS" Type="Self.CEDULAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="CEDULAS">
+              <PropertyRef Name="FK_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REGISTOL">
+          <End Role="REGISTRO" Type="Self.REGISTRO" Multiplicity="0..1" />
+          <End Role="LOGINE" Type="Self.LOGINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGISTRO">
+              <PropertyRef Name="ID_REGISTRO" />
+            </Principal>
+            <Dependent Role="LOGINE">
+              <PropertyRef Name="FK_REGISTRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GenerateContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CEDULAS" EntityType="Self.CEDULAS" />
+          <EntitySet Name="LOGINE" EntityType="Self.LOGINE" />
+          <EntitySet Name="REGISTRO" EntityType="Self.REGISTRO" />
+          <AssociationSet Name="FK_REGSITROUSER" Association="Self.FK_REGSITROUSER">
+            <End Role="REGISTRO" EntitySet="REGISTRO" />
+            <End Role="CEDULAS" EntitySet="CEDULAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REGISTOL" Association="Self.FK_REGISTOL">
+            <End Role="REGISTRO" EntitySet="REGISTRO" />
+            <End Role="LOGINE" EntitySet="LOGINE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GENERATORCEDULAModelStoreContainer" CdmEntityContainer="GenerateContext">
+          <EntitySetMapping Name="CEDULAS">
+            <EntityTypeMapping TypeName="GENERATORCEDULAModel.CEDULAS">
+              <MappingFragment StoreEntitySet="CEDULAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CEDULAS" ColumnName="ID_CEDULAS" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="LUGARNACIMIENTO" ColumnName="LUGARNACIMIENTO" />
+                <ScalarProperty Name="FECHANACIMIENTO" ColumnName="FECHANACIMIENTO" />
+                <ScalarProperty Name="NACIONALIDAD" ColumnName="NACIONALIDAD" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="SANGRE" ColumnName="SANGRE" />
+                <ScalarProperty Name="ESTADOCIVIL" ColumnName="ESTADOCIVIL" />
+                <ScalarProperty Name="OCUPACION" ColumnName="OCUPACION" />
+                <ScalarProperty Name="FECHAEXPIRACION" ColumnName="FECHAEXPIRACION" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="COLEGIOELECTORAL" ColumnName="COLEGIOELECTORAL" />
+                <ScalarProperty Name="UBICACIONCOLEGIO" ColumnName="UBICACIONCOLEGIO" />
+                <ScalarProperty Name="DIRECCIONRECIDENCIA" ColumnName="DIRECCIONRECIDENCIA" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="MUNICIPIO" ColumnName="MUNICIPIO" />
+                <ScalarProperty Name="REGISTRONACIMIENTO" ColumnName="REGISTRONACIMIENTO" />
+                <ScalarProperty Name="CODIGOPOSTAL" ColumnName="CODIGOPOSTAL" />
+                <ScalarProperty Name="FK_REGISTRO" ColumnName="FK_REGISTRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGINE">
+            <EntityTypeMapping TypeName="GENERATORCEDULAModel.LOGINE">
+              <MappingFragment StoreEntitySet="LOGINE">
+                <ScalarProperty Name="ID_LOGIN" ColumnName="ID_LOGIN" />
+                <ScalarProperty Name="USAURIO" ColumnName="USAURIO" />
+                <ScalarProperty Name="PASSAWORD" ColumnName="PASSAWORD" />
+                <ScalarProperty Name="FK_REGISTRO" ColumnName="FK_REGISTRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGISTRO">
+            <EntityTypeMapping TypeName="GENERATORCEDULAModel.REGISTRO">
+              <MappingFragment StoreEntitySet="REGISTRO">
+                <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+                <ScalarProperty Name="NOMBRECOMPLETO" ColumnName="NOMBRECOMPLETO" />
+                <ScalarProperty Name="CEDULARPERSONAL" ColumnName="CEDULARPERSONAL" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PASSAWORD" ColumnName="PASSAWORD" />
+                <ScalarProperty Name="CONFIRMPASSAWORD" ColumnName="CONFIRMPASSAWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
